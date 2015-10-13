@@ -1,0 +1,112 @@
+<section data-ng-controller="PriceListsController" data-ng-init="findOne()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>View Price List</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#!/">Home</a>
+          </li>
+          <li>
+            <a href="#!/price-lists">PriceLists</a>
+          </li>
+          <li class="active">
+            <strong>Price Lists</strong>
+          </li> 
+        </ol>            
+    </div>
+  </div>
+  <!-- general form elements -->
+  <!-- <div class="ibox float-e-margins"  data-ng-show="((authentication.user) && (authentication.user._id == priceList.user._id))"> -->
+  <div class="ibox float-e-margins" >
+    <div class="ibox-content">    
+      <div class="row">
+      <dl class="dl-horizontal">
+      
+      
+        <dt>Price List Name </dt><dd>{{ priceList.priceListName }}</dd>
+      
+      
+      
+      
+        <dt>Effective Date </dt><dd>{{ priceList.effectiveDate | date  }}</dd>
+      
+      
+      
+      
+      
+      
+      </dl>
+      
+      
+      
+      
+      
+      
+      
+      
+        <div class="col-md-12 form-group">
+          <label class="control-label" for="products">Products</label>                
+          <table class="table">
+            <thead>
+            <tr>
+            <th>S.No</th>
+            
+             
+            <th>Product</th>
+            
+            
+             
+            <th>Price</th>
+            
+            
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="product in priceList.products">
+            <td>{{ $index +1 }}</td>
+            
+            
+            
+            <td>{{ product.product.name }}</td>
+                         
+            
+            
+            <td>{{ product.price  }}</td>
+            
+                         
+            
+            </tr>
+            </tbody>
+            <tfoot>
+            
+            
+            
+            
+                        
+            </tfoot>
+          </table>
+        </div>
+      
+      
+      
+      </div>
+      <div class="row">
+        <div>
+          <a class="btn btn-primary" href="/#!/price-lists/{{priceList._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </div>              
+      </div>
+    </div><!-- /.ibox-content -->
+  </div><!-- /.ibox -->
+  
+      
+  
+      
+  
+      
+    
+<section>

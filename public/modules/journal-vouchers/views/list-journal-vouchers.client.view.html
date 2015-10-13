@@ -1,0 +1,70 @@
+<section data-ng-controller="JournalVouchersController" data-ng-init="find()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>List Journal Vouchers</h2>
+      <ol class="breadcrumb">
+        <li>
+          <a href="#!/">Home</a>
+        </li>
+        <li class="active">
+          <strong>Journal Vouchers</strong>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="alert alert-warning text-center" data-ng-hide="!journalVouchers.$resolved || journalVouchers.length">
+    No JournalVouchers yet, why don't you <a href="/#!/journal-vouchers/create">create one</a>?
+  </div>  
+  <div class="ibox float-e-margins" data-ng-show="journalVouchers.length>0">
+    <div class="ibox-title">
+      <h5>JournalVouchers ({{journalVouchers.length}})</h5>
+      <div class="ibox-tools">
+        <a href="/#!/journal-vouchers/create" class="btn btn-primary btn-xs">Create</a>
+      </div>
+    </div>
+      
+    <div class="ibox-content">
+      <div class="input-group">
+        <input type="text" ng-model="searchtext" placeholder="Search JournalVouchers" class="input form-control">
+        <span class="input-group-btn">
+            <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+        </span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>S.No</th>
+            
+            <th>Voucher Number</th>
+            
+            <th>Voucher Date</th>
+            
+            <th></th>
+<!--          <th>E</th>
+              <th>D</th> -->
+          </tr>
+          </thead>
+          <tbody>
+          <tr data-ng-repeat="journalVoucher in journalVouchers | filter: searchtext">
+            <td>{{ $index +1 }}</td>
+            
+            
+            <td>{{ journalVoucher.voucherNumber  }}</td>
+            
+            
+            
+            <td>{{ journalVoucher.voucherDate  | date  }}</td>
+            
+            
+            <td><a class="glyphicon glyphicon-search" href="/#!/journal-vouchers/{{journalVoucher._id}}"></a></td>
+<!--          <td><a class="glyphicon glyphicon-edit" href="/#!/journal-vouchers/{{journalVoucher._id}}/edit"></a></td>
+              <td><a class="glyphicon glyphicon-trash" ng-click="remove(journalVoucher)"></a></td> -->
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

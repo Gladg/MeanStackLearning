@@ -1,0 +1,222 @@
+<section data-ng-controller="PurchasesController" data-ng-init="init()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>New Purchase</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#!/">Home</a>
+          </li>
+          <li>
+            <a href="#!/purchases">Purchases</a>
+          </li>
+          <li class="active">
+            <strong>Purchases</strong>
+          </li> 
+        </ol>            
+    </div>
+  </div>
+  <div class="ibox float-e-margins">
+    <div class="ibox-content">
+      <div class="row">
+        <form>
+          <fieldset>
+            <div class="row">
+            
+            
+              <div class="col-md-2 form-group">
+                <label class="control-label" for="billDate">Bill Date</label>
+                
+                 
+                <label class="form-control" id="billDate">{{ purchase.billDate  | date  }}</label>
+                 
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-8 form-group">
+                <label class="control-label" for="party">Party</label>
+                 
+                <select id="party" class="form-control" 
+                  ng-model="purchase.party" 
+                  ng-required="true" 
+                  ng-options="supplier as supplier.name for supplier in suppliers" />
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-1 form-group">
+                <label class="control-label" for="paid">Paid</label>
+                
+                 
+                <input type="Checkbox" ng-model="purchase.paid" id="paid" class="form-control" placeholder="" required />
+                 
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-1 form-group">
+                <label class="control-label" for="amount">Amount</label>
+                
+                 
+                <label class="form-control" id="amount">{{ purchase.amount  }}</label>
+                 
+                 
+              </div>
+            
+            
+            
+            
+            
+            
+              <script type="text/ng-template" id="itemContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Items</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    
+                    
+                    <div class="col-md-3 form-group">
+                      <label class="control-label" for="product">Product</label>
+                      
+                      
+                      
+                        <select id="product" class="form-control" 
+                          ng-model="item.product" 
+                          ng-required="true" 
+                          ng-options="product as product.name for product in products" />
+                      
+                    </div>                    
+                    
+                    
+                    
+                    <div class="col-md-2 form-group">
+                      <label class="control-label" for="quantity">Quantity</label>
+                      
+                        <input type="Number" ng-model="item.quantity" id="quantity" class="form-control" placeholder="" required/>
+                      
+                      
+                      
+                    </div>                    
+                    
+                    
+                    
+                    <div class="col-md-2 form-group">
+                      <label class="control-label" for="cost">Cost</label>
+                      
+                        <input type="Number" ng-model="item.cost" id="cost" class="form-control" placeholder="" required/>
+                      
+                      
+                      
+                    </div>                    
+                    
+                    
+                    
+                    <div class="col-md-2 form-group">
+                      <label class="control-label" for="amount">Amount</label>
+                      
+                      
+                        <label class="form-control" id="amount">{{ (item.quantity * item.cost) || 0  || 0 }}</label>
+                      
+                      
+                    </div>                    
+                    
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" ng-click="ok()">OK</button>
+                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+              </script>      
+              <div class="col-md-12 form-group">
+                <label class="control-label" for="items">Items</label>                
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>S.No</th>
+                    
+                    
+                    <th>Product</th>
+                    
+                    
+                    
+                    <th>Quantity</th>
+                    
+                    
+                    
+                    <th>Cost</th>
+                    
+                    
+                    
+                    <th>Amount</th>
+                    
+                    
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr data-ng-repeat="item in purchase.items">
+                    <td>{{ $index +1 }}</td>
+                    
+                    
+                    
+                    <td>{{ item.product.name }}</td>
+                                        
+                    
+                    
+                    <td>{{ item.quantity  }}</td>
+                    
+                                        
+                    
+                    
+                    <td>{{ item.cost  }}</td>
+                    
+                                        
+                    
+                    
+                    <td>{{ item.amount  }}</td>
+                    
+                                        
+                    
+                    <td><a ng-click="removeitem($index)" class="glyphicon glyphicon-trash"></a></td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                              
+                  </tfoot>
+                </table>
+                <button class="btn btn-primary" ng-click="additem()"><span class="glyphicon glyphicon-plus"></span></button>
+              </div>
+            
+            
+            
+            </div>
+            <div class="row">
+              <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+              </div>               
+              <div class="col-md-2 form-group">
+                <button ng-click="create()" class="btn btn-primary" >Save</button>
+              </div>              
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

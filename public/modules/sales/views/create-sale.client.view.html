@@ -1,0 +1,246 @@
+<section data-ng-controller="SalesController" data-ng-init="init()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>New Sale</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#!/">Home</a>
+          </li>
+          <li>
+            <a href="#!/sales">Sales</a>
+          </li>
+          <li class="active">
+            <strong>Sales</strong>
+          </li> 
+        </ol>            
+    </div>
+  </div>
+  <div class="ibox float-e-margins">
+    <div class="ibox-content">
+      <div class="row">
+        <form>
+          <fieldset>
+            <div class="row">
+            
+            
+              <div class="col-md-5 form-group">
+                <label class="control-label" for="party">Party</label>
+                 
+                <select id="party" class="form-control" 
+                  ng-model="sale.party" 
+                  ng-required="true" 
+                  ng-options="customer as customer.name for customer in customers" />
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-2 form-group">
+                <label class="control-label" for="billDateTime">Bill Date Time</label>
+                
+                 
+                <label class="form-control" id="billDateTime">{{ sale.billDateTime  | date  }}</label>
+                 
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-2 form-group">
+                <label class="control-label" for="totalAmount">Total Amount</label>
+                
+                 
+                <label class="form-control" id="totalAmount">{{ sale.totalAmount  }}</label>
+                 
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-2 form-group">
+                <label class="control-label" for="totalDiscount">Total Discount</label>
+                
+                 
+                <label class="form-control" id="totalDiscount">{{ sale.totalDiscount  }}</label>
+                 
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-2 form-group">
+                <label class="control-label" for="taxes">Taxes</label>
+                
+                 
+                <label class="form-control" id="taxes">{{ sale.taxes  }}</label>
+                 
+                 
+              </div>
+            
+            
+            
+            
+              <div class="col-md-1 form-group">
+                <label class="control-label" for="creditSales">Credit</label>
+                
+                 
+                <input type="Checkbox" ng-model="sale.creditSales" id="creditSales" class="form-control" placeholder="" required />
+                 
+                 
+              </div>
+            
+            
+            
+            
+            
+            
+              <script type="text/ng-template" id="itemContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Items</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    
+                    
+                    <div class="col-md-6 form-group">
+                      <label class="control-label" for="product">Product</label>
+                      
+                      
+                      
+                        <select id="product" class="form-control" 
+                          ng-model="item.product" 
+                          ng-required="true" 
+                          ng-options="product as product.name for product in products" />
+                      
+                    </div>                    
+                    
+                    
+                    
+                    <div class="col-md-2 form-group">
+                      <label class="control-label" for="quantity">Quantity</label>
+                      
+                        <input type="Number" ng-model="item.quantity" id="quantity" class="form-control" placeholder="" required/>
+                      
+                      
+                      
+                    </div>                    
+                    
+                    
+                    
+                    <div class="col-md-2 form-group">
+                      <label class="control-label" for="price">Price</label>
+                      
+                      
+                        <label class="form-control" id="price">{{ item.product.price  || 0 }}</label>
+                      
+                      
+                    </div>                    
+                    
+                    
+                    
+                    <div class="col-md-2 form-group">
+                      <label class="control-label" for="amount">Amount</label>
+                      
+                      
+                        <label class="form-control" id="amount">{{ (item.product.price * item.quantity)  || 0 }}</label>
+                      
+                      
+                    </div>                    
+                    
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" ng-click="ok()">OK</button>
+                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+              </script>      
+              <div class="col-md-12 form-group">
+                <label class="control-label" for="items">Items</label>                
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>S.No</th>
+                    
+                    
+                    <th>Product</th>
+                    
+                    
+                    
+                    <th>Quantity</th>
+                    
+                    
+                    
+                    <th>Price</th>
+                    
+                    
+                    
+                    <th>Amount</th>
+                    
+                    
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr data-ng-repeat="item in sale.items">
+                    <td>{{ $index +1 }}</td>
+                    
+                    
+                    
+                    <td>{{ item.product.name }}</td>
+                                        
+                    
+                    
+                    <td>{{ item.quantity  }}</td>
+                    
+                                        
+                    
+                    
+                    <td>{{ item.price  }}</td>
+                    
+                                        
+                    
+                    
+                    <td>{{ item.amount  }}</td>
+                    
+                                        
+                    
+                    <td><a ng-click="removeitem($index)" class="glyphicon glyphicon-trash"></a></td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                              
+                  </tfoot>
+                </table>
+                <button class="btn btn-primary" ng-click="additem()"><span class="glyphicon glyphicon-plus"></span></button>
+              </div>
+            
+            
+            
+            </div>
+            <div class="row">
+              <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+              </div>               
+              <div class="col-md-2 form-group">
+                <button ng-click="create()" class="btn btn-primary" >Save</button>
+              </div>              
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

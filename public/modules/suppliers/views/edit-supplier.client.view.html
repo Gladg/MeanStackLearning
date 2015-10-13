@@ -1,0 +1,142 @@
+<section data-ng-controller="SuppliersController" data-ng-init="findOne()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>Update Supplier</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#!/">Home</a>
+          </li>
+          <li>
+            <a href="#!/suppliers">Suppliers</a>
+          </li>
+          <li class="active">
+            <strong>Suppliers</strong>
+          </li> 
+        </ol>            
+    </div>
+  </div>
+   <div class="ibox float-e-margins">
+    <div class="ibox-content">
+      <div class="row">
+        <form>
+          <fieldset>
+            <div class="row">
+            
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="name">Name</label>
+                
+                 
+                <input type="Text" ng-model="supplier.name" id="name" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="address">Address</label>
+                
+                 
+                <input type="Text" ng-model="supplier.address" id="address" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="mobileNumber">Mobile Number</label>
+                
+                 
+                <input type="Number" ng-model="supplier.mobileNumber" id="mobileNumber" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="email">Email</label>
+                
+                 
+                <input type="Text" ng-model="supplier.email" id="email" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="pan">Pan</label>
+                
+                 
+                <input type="Text" ng-model="supplier.pan" id="pan" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="tin">Tin</label>
+                
+                 
+                <input type="Text" ng-model="supplier.tin" id="tin" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            </div>
+            <div class="row">
+              <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+              </div>               
+              <div class="col-md-2 form-group">
+                <button ng-click="update()" class="btn btn-primary" >Save</button>
+              </div>              
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+</section>

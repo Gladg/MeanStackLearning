@@ -1,0 +1,170 @@
+<section data-ng-controller="PriceListsController" data-ng-init="findOne()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>Update Price List</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#!/">Home</a>
+          </li>
+          <li>
+            <a href="#!/price-lists">PriceLists</a>
+          </li>
+          <li class="active">
+            <strong>Price Lists</strong>
+          </li> 
+        </ol>            
+    </div>
+  </div>
+   <div class="ibox float-e-margins">
+    <div class="ibox-content">
+      <div class="row">
+        <form>
+          <fieldset>
+            <div class="row">
+            
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="priceListName">Price List Name</label>
+                
+                 
+                <input type="Text" ng-model="priceList.priceListName" id="priceListName" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+              <div class="col-md-3 form-group">
+                <label class="control-label" for="effectiveDate">Effective Date</label>
+                
+                 
+                <input type="Date" ng-model="priceList.effectiveDate" id="effectiveDate" class="form-control" placeholder="" required />
+                                 
+                 
+              </div>
+            
+            
+             
+
+              
+            
+            
+            
+            
+            
+              <script type="text/ng-template" id="productContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">Products</h3>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                  
+                    
+                    <div class="col-md-3 form-group">
+                      <label class="control-label" for="product">Product</label>                  
+                    
+                                        
+                    
+                      <select id="product" class="form-control" 
+                        ng-model="product.product" 
+                        ng-required="true" 
+                        ng-options="product as product.name for product in products" />
+                    
+                    </div>                    
+                                        
+                  
+                    
+                    <div class="col-md-3 form-group">
+                      <label class="control-label" for="price">Price</label>                  
+                    
+                      <input type="Number" ng-model="product.price" id="price" class="form-control" placeholder="" required />
+                    
+                                        
+                    
+                    </div>                    
+                                        
+                  
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-primary" ng-click="ok()">OK</button>
+                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+              </script>      
+              <div class="col-md-12 form-group">
+                <label class="control-label" for="products">Products</label>                
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>S.No</th>
+                  
+                    
+                    <th>Product</th>
+                    
+                  
+                    
+                    <th>Price</th>
+                    
+                  
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr data-ng-repeat="product in priceList.products">
+                    <td>{{ $index +1 }}</td>
+                  
+                    
+                    
+                    <td>{{ product.product.name }}</td>
+                       
+                  
+                    
+                    <td>{{ product.price  }}</td>
+                    
+                       
+                  
+                    <td><a ng-click="removeproduct($index)" class="glyphicon glyphicon-trash"></a></td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  
+                  
+                  
+                  
+                              
+                  </tfoot>
+            
+                </table>
+                <button class="btn btn-primary" ng-click="addproduct()"><span class="glyphicon glyphicon-plus"></span></button>
+              </div>
+              
+                 
+
+              
+            </div>
+            <div class="row">
+              <div data-ng-show="error" class="text-danger">
+                <strong data-ng-bind="error"></strong>
+              </div>               
+              <div class="col-md-2 form-group">
+                <button ng-click="update()" class="btn btn-primary" >Save</button>
+              </div>              
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+      
+  
+      
+  
+      
+  
+</section>

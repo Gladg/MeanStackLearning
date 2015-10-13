@@ -1,0 +1,179 @@
+<section data-ng-controller="SalesController" data-ng-init="findOne()">
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+      <h2>View Sale</h2>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#!/">Home</a>
+          </li>
+          <li>
+            <a href="#!/sales">Sales</a>
+          </li>
+          <li class="active">
+            <strong>Sales</strong>
+          </li> 
+        </ol>            
+    </div>
+  </div>
+  <!-- general form elements -->
+  <!-- <div class="ibox float-e-margins"  data-ng-show="((authentication.user) && (authentication.user._id == sale.user._id))"> -->
+  <div class="ibox float-e-margins" >
+    <div class="ibox-content">    
+      <div class="row">
+      <dl class="dl-horizontal">
+      
+      
+      
+        <dt>Party </dt><dd>{{ sale.party.name}}</dd>
+      
+      
+      
+        <dt>Bill Number </dt><dd>{{ sale.billNumber }}</dd>
+      
+      
+      
+      
+        <dt>Bill Date Time </dt><dd>{{ sale.billDateTime | date  }}</dd>
+      
+      
+      
+      
+        <dt>Total Amount </dt><dd>{{ sale.totalAmount }}</dd>
+      
+      
+      
+      
+        <dt>Total Discount </dt><dd>{{ sale.totalDiscount }}</dd>
+      
+      
+      
+      
+        <dt>Taxes </dt><dd>{{ sale.taxes }}</dd>
+      
+      
+      
+      
+        <dt>Credit Sales </dt><dd>{{ sale.creditSales  | yesNo }}</dd>
+      
+      
+      
+      
+      
+      
+      </dl>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <div class="col-md-12 form-group">
+          <label class="control-label" for="items">Items</label>                
+          <table class="table">
+            <thead>
+            <tr>
+            <th>S.No</th>
+            
+             
+            <th>Product</th>
+            
+            
+             
+            <th>Quantity</th>
+            
+            
+             
+            <th>Price</th>
+            
+            
+             
+            <th>Amount</th>
+            
+            
+            </tr>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="item in sale.items">
+            <td>{{ $index +1 }}</td>
+            
+            
+            
+            <td>{{ item.product.name }}</td>
+                         
+            
+            
+            <td>{{ item.quantity  }}</td>
+            
+                         
+            
+            
+            <td>{{ item.price  }}</td>
+            
+                         
+            
+            
+            <td>{{ item.amount  }}</td>
+            
+                         
+            
+            </tr>
+            </tbody>
+            <tfoot>
+            
+            
+            
+            
+            
+            
+            
+            
+                        
+            </tfoot>
+          </table>
+        </div>
+      
+      
+      
+      </div>
+      <div class="row">
+        <div>
+          <a class="btn btn-primary" href="/#!/sales/{{sale._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </div>              
+      </div>
+    </div><!-- /.ibox-content -->
+  </div><!-- /.ibox -->
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+  
+      
+    
+<section>
